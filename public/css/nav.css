@@ -1,0 +1,9 @@
+nav {
+    flex: 0 0 64px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: var(--panel-prime);
+};

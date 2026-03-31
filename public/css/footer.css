@@ -1,0 +1,10 @@
+footer { 
+    flex: 0 0 124px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--panel-prime);
+}

@@ -1,0 +1,38 @@
+.button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    height: 96px;
+}
+
+.button {
+    flex: 0 1 168px;
+
+    height: 60px;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+    border: 2px solid var(--panel-prime);
+}
+
+.button:hover {
+    background-color: var(--panel-prime);
+}
+
+.button:active {
+    translate: 0 1px;
+}
+
+.spacer {
+    height: 48px;
+}
+
+form { 
+    /* border: 2px solid blue; */
+}
