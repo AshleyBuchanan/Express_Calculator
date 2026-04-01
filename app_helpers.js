@@ -3,6 +3,12 @@ const getNumsFromQuery = (req, res, next) => {
     const tokens = parseNumsString(req.query.nums);
     
     const { invalid } = validateNumberStrings(tokens);
+    if (tokens.length === 0) {
+        return res.status(400).json({
+            error: 'numbers are required'
+        });
+    };
+    
     if (invalid.length) {
         return res.status(400).json({
             error: `Invalid number(s): ${invalid.join(', ')}`
@@ -50,7 +56,7 @@ const findMedian = (arr) => {
     const sorted = [...arr].sort((a, b) => a - b);
     const mid = Math.floor(sorted.length / 2);
 
-    return median = sorted.length % 2 === 0
+    return sorted.length % 2 === 0
         ? (sorted[mid - 1] + sorted[mid]) / 2
         : sorted[mid];
 };
