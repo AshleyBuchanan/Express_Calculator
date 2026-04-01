@@ -41,7 +41,7 @@ app.get('/mode', getNumsFromQuery, (req, res) => {
 
 app.get('/all', getNumsFromQuery, (req, res) => {
     const mode = findMode(req.nums);
-    const median = findMode(req.nums);
+    const median = findMedian(req.nums);
     const mean = findMean(req.nums);
     res.json({
         operation: 'all',

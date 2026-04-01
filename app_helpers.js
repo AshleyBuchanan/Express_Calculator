@@ -41,13 +41,13 @@ const convertToNumbers = (tokens) => {
 //calculation helpers
 const findMean = (arr) => {
     if (arr.length === 0) return null;
-    return arr.reduce((sum, n) => sum + n, 0) / arr.length;
+    return [...arr].reduce((sum, n) => sum + n, 0) / arr.length;
 };
 
 const findMedian = (arr) => {
     if (arr.length === 0) return null;
 
-    const sorted = arr.sort((a, b) => a - b);
+    const sorted = [...arr].sort((a, b) => a - b);
     const mid = Math.floor(sorted.length / 2);
 
     return median = sorted.length % 2 === 0
