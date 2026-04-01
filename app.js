@@ -38,7 +38,19 @@ app.get('/mean', getNumsFromQuery, async (req, res) => {
         });
     };
 
-    res.json({result});
+    res.format({
+        'application/json': () => {
+            res.json(result);
+        },
+
+        'text/html': () => {
+            res.render('result', { result, nums: req.nums });
+        },
+
+        default: () => {
+            res.status(406).send('Not Acceptable');
+        }
+    });
 });
 
 app.get('/median', getNumsFromQuery, async (req, res) => {
@@ -55,7 +67,19 @@ app.get('/median', getNumsFromQuery, async (req, res) => {
         });
     };
 
-    res.json({result});
+    res.format({
+        'application/json': () => {
+            res.json(result);
+        },
+
+        'text/html': () => {
+            res.render('result', { result, nums: req.nums });
+        },
+
+        default: () => {
+            res.status(406).send('Not Acceptable');
+        }
+    });
 });
 
 app.get('/mode', getNumsFromQuery, async (req, res) => {
@@ -72,7 +96,19 @@ app.get('/mode', getNumsFromQuery, async (req, res) => {
         });
     };
 
-    res.json({result});
+    res.format({
+        'application/json': () => {
+            res.json(result);
+        },
+
+        'text/html': () => {
+            res.render('result', { result, nums: req.nums });
+        },
+
+        default: () => {
+            res.status(406).send('Not Acceptable');
+        }
+    });
 });
 
 app.get('/all', getNumsFromQuery, async (req, res) => {
@@ -91,7 +127,19 @@ app.get('/all', getNumsFromQuery, async (req, res) => {
         });
     };
 
-    res.json({result});
+    res.format({
+        'application/json': () => {
+            res.json(result);
+        },
+
+        'text/html': () => {
+            res.render('result', { result, nums: req.nums });
+        },
+
+        default: () => {
+            res.status(406).send('Not Acceptable');
+        }
+    });
 });
 
 

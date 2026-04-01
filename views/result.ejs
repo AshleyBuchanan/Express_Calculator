@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/calc.css">
+    <title>Express Calculator</title>
+</head>
+<body>  
+    <%- include('./partials/nav.ejs') %> 
+    <main>
+        <div class="block center">Calculation Result</div>
+        <div class="block center">
+            <div>nums: <%= nums.join(', ') %></div>
+            <div>mean: <%= result.mean %></div>
+            <div>median: <%= result.median %></div>
+            <div>mode: <%= result.mode %></div>
+        </div>
+     
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

@@ -46,6 +46,10 @@ main {
     justify-content: center;
 }
 
+.block.center {
+    align-items: center;
+}
+
 :root {
     --panel-prime: hsl(0, 0%, 20%);
 
