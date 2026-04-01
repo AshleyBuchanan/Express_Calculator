@@ -2,12 +2,21 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const {getNumsFromQuery, findMean, findMedian, findMode} = require('./app_helpers');
+const fs = require('fs/promises');
 
-//helpers
+
+// mids
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+// save functionality
+const SAVE_FILE = path.join(__dirname, 'saved-calculations.jsonl');
+const saveCalculation = async (record) => {
+    await fs.appendFile(SAVE_FILE, `${JSON.stringify(record)}\n`, 'utf8');
+};
 
 
 // routes
@@ -15,40 +24,74 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-app.get('/mean', getNumsFromQuery, (req, res) => {
-    const mean = findMean(req.nums);
-    res.json({
+app.get('/mean', getNumsFromQuery, async (req, res) => {
+   const result = {
         operation: 'mean',
-        value: mean
-    });
+        mode: findMean(req.nums)
+    };
+ 
+   if(req.query.save === 'true') {
+        await saveCalculation({
+            nums: req.nums,
+            ...result,
+            savedAt: new Date().toISOString()
+        });
+    };
+
+    res.json({result});
 });
 
-app.get('/median', getNumsFromQuery, (req, res) => {
-    const median = findMedian(req.nums);
-    res.json({
-        operation: 'median',
-        value: median
-    });
-});
-
-app.get('/mode', getNumsFromQuery, (req, res) => {
-    const mode = findMode(req.nums);
-    res.json({
+app.get('/median', getNumsFromQuery, async (req, res) => {
+    const result = {
         operation: 'mode',
-        value: mode
-    });
+        mode: findMedian(req.nums)
+    };
+ 
+   if(req.query.save === 'true') {
+        await saveCalculation({
+            nums: req.nums,
+            ...result,
+            savedAt: new Date().toISOString()
+        });
+    };
+
+    res.json({result});
 });
 
-app.get('/all', getNumsFromQuery, (req, res) => {
-    const mode = findMode(req.nums);
-    const median = findMedian(req.nums);
-    const mean = findMean(req.nums);
-    res.json({
+app.get('/mode', getNumsFromQuery, async (req, res) => {
+    const result = {
+        operation: 'mode',
+        mode: findMode(req.nums)
+    };
+ 
+   if(req.query.save === 'true') {
+        await saveCalculation({
+            nums: req.nums,
+            ...result,
+            savedAt: new Date().toISOString()
+        });
+    };
+
+    res.json({result});
+});
+
+app.get('/all', getNumsFromQuery, async (req, res) => {
+    const result = {
         operation: 'all',
-        mean: mean,
-        median: median,
-        mode: mode
-    });
+        mean: findMean(req.nums),
+        median: findMedian(req.nums),
+        mode: findMode(req.nums)
+    };
+
+    if(req.query.save === 'true') {
+        await saveCalculation({
+            nums: req.nums,
+            ...result,
+            savedAt: new Date().toISOString()
+        });
+    };
+
+    res.json({result});
 });
 
 

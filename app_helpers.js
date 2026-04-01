@@ -5,13 +5,13 @@ const getNumsFromQuery = (req, res, next) => {
     const { invalid } = validateNumberStrings(tokens);
     if (tokens.length === 0) {
         return res.status(400).json({
-            error: 'numbers are required'
+            error: 'nums are required'
         });
     };
-    
+
     if (invalid.length) {
         return res.status(400).json({
-            error: `Invalid number(s): ${invalid.join(', ')}`
+            error: `Invalid num(s): ${invalid.join(', ')}`
         });
     };
 
@@ -21,7 +21,7 @@ const getNumsFromQuery = (req, res, next) => {
 };
 
 
-//parsing, validation, and conversion functions
+// parsing, validation, and conversion functions
 const parseNumsString = (numsString) => {
     if (!numsString) return [];
     return numsString.split(',');
@@ -44,7 +44,7 @@ const convertToNumbers = (tokens) => {
 };
 
 
-//calculation helpers
+// calculation helpers
 const findMean = (arr) => {
     if (arr.length === 0) return null;
     return [...arr].reduce((sum, n) => sum + n, 0) / arr.length;
@@ -84,7 +84,7 @@ const findMode = (arr) => {
     return modes.length === 1 ? modes[0] : null;
 };
 
-//exports
+// exports
 module.exports = {
     getNumsFromQuery,
     findMean,
