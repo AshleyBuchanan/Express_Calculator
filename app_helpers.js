@@ -14,6 +14,8 @@ const getNumsFromQuery = (req, res, next) => {
     next();
 };
 
+
+//parsing, validation, and conversion functions
 const parseNumsString = (numsString) => {
     if (!numsString) return [];
     return numsString.split(',');
@@ -36,8 +38,15 @@ const convertToNumbers = (tokens) => {
 };
 
 
-//helper helpers
+//calculation helpers
+const findMean = (arr) => {
+    if (arr.length === 0) return null;
+    return arr.reduce((sum, n) => sum + n, 0) / arr.length;
+};
+
 const findMedian = (arr) => {
+    if (arr.length === 0) return null;
+
     const sorted = arr.sort((a, b) => a - b);
     const mid = Math.floor(sorted.length / 2);
 
@@ -47,8 +56,10 @@ const findMedian = (arr) => {
 };
 
 const findMode = (arr) => {
+    if (arr.length === 0) return null; // this is not needed in this function, but included to bypass.
+    
     const counts = new Map();
-
+    
     for (const num of arr) {
         counts.set(num, (counts.get(num) || 0) + 1);
     };
@@ -57,7 +68,6 @@ const findMode = (arr) => {
     for (const count of counts.values()) {
         if (count > maxCount) maxCount = count;
     };
-
     if (maxCount === 1) return null;
 
     const modes = [];
@@ -68,8 +78,11 @@ const findMode = (arr) => {
     return modes.length === 1 ? modes[0] : null;
 };
 
+
+//exports
 module.exports = {
     getNumsFromQuery,
+    findMean,
     findMedian,
     findMode
 };

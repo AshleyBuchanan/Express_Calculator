@@ -53,4 +53,6 @@ main {
     --shadow: hsla(0, 0%, 5%);
 
     --font-prime: hsl(0, 0%, 80%);
+    --font-second: hsl(0, 0%, 60%);
+    --font-shine: hsl(0, 0%, 100%);
 }

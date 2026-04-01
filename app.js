@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const {getNumsFromQuery, findMedian, findMode} = require('./app_helpers');
+const {getNumsFromQuery, findMean, findMedian, findMode} = require('./app_helpers');
 
 //helpers
 app.use(express.json());
@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/mean', getNumsFromQuery, (req, res) => {
-    const mean = req.nums.reduce((sum, n) => sum + n, 0) / req.nums.length;
+    const mean = findMean(req.nums);
     res.json({
         operation: 'mean',
         value: mean

@@ -4,13 +4,14 @@
   "description": "calculate mean, median, and mode operations server side and pass results to client.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "ashley buchanan",
   "license": "ISC",
   "dependencies": {
     "ejs": "^5.0.1",
     "express": "^5.2.1",
+    "jest": "^29.7.0",
     "path": "^0.12.7"
   }
 }

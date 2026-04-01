@@ -19,18 +19,28 @@
     
 
     border: 2px solid var(--panel-prime);
+    font-size: larger;
+    color: var(--font-second);
+    transition: all 250ms;
 }
 
 .button:hover {
     background-color: var(--panel-prime);
+    color: var(--font-prime);
 }
 
 .button:active {
-    translate: 0 1px;
+    translate: 0 2px;
+    color: var(--font-shine);
+    box-shadow: inset 0 0 2px var(--font-prime);
 }
 
 .spacer {
     height: 48px;
+}
+
+.large-font {
+    font-size: xx-large;
 }
 
 form { 
