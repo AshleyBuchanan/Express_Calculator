@@ -32,10 +32,22 @@ app.get('/median', getNumsFromQuery, (req, res) => {
 });
 
 app.get('/mode', getNumsFromQuery, (req, res) => {
-    const mode = findMode(req.nums)
+    const mode = findMode(req.nums);
     res.json({
         operation: 'mode',
         value: mode
+    });
+});
+
+app.get('/all', getNumsFromQuery, (req, res) => {
+    const mode = findMode(req.nums);
+    const median = findMode(req.nums);
+    const mean = findMean(req.nums);
+    res.json({
+        operation: 'all',
+        mean: mean,
+        median: median,
+        mode: mode
     });
 });
 

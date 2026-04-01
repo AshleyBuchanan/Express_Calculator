@@ -78,7 +78,6 @@ const findMode = (arr) => {
     return modes.length === 1 ? modes[0] : null;
 };
 
-
 //exports
 module.exports = {
     getNumsFromQuery,
